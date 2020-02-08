@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Stages]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Name] NCHAR(255) NOT NULL
+)
