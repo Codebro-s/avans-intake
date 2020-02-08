@@ -57,4 +57,12 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Build Include="Performers.sql" />
+    <Build Include="Stages.sql" />
+    <Build Include="Performances.sql" />
+  </ItemGroup>
+>>>>>>> models
 </Project>
