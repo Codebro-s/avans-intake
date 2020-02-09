@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Band_Scheduler"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <TabControl Name="TabDays">
+        <TabItem Header="TabItem">
+            <Grid Name="Day" Background="#FFE5E5E5"/>
+        </TabItem>
+    </TabControl>
 </Window>

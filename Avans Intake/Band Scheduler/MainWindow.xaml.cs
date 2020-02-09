@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Band_Scheduler.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,78 @@ namespace Band_Scheduler
     /// </summary>
     public partial class MainWindow : Window
     {
+        int amountOfTabs = 0;
         public MainWindow()
         {
             InitializeComponent();
+            RenderDayTabs();
+        } 
+        /// <summary>
+        /// This function calculates how many tabs need to be rendered
+        /// </summary>
+        public int CalculateDayTabAmount()
+        {
+            // get the data
+            Stage[] stages = new Stage[5];
+            Performer[] performers = new Performer[5];
+            Performance[] performances = new Performance[5];
+            for (int i = 0; i < stages.Length; i++)
+            {
+                stages[i] = new Stage
+                {
+                    Id = i,
+                    Name = "stage" + i
+                };
+                performers[i] = new Performer
+                {
+                    Id = i,
+                    Name = "performer " + i,
+                    Description = "very good band" + i
+                };
+                performances[i] = new Performance
+                {
+                    Id = 1,
+                    Performer = performers[i],
+                    Stage = stages[i],
+                    StartDateTime = DateTime.UtcNow.AddHours(i),
+                    EndDateTime = DateTime.UtcNow.AddHours(i + 1)
+                };
+            }
+            DayOfWeek lastTabDay = performances[0].EndDateTime.DayOfWeek;
+            foreach (Performance performance in performances)
+            {
+                if (performance.EndDateTime.DayOfWeek != lastTabDay)
+                {
+                    amountOfTabs++;
+                    lastTabDay = performance.EndDateTime.DayOfWeek;
+                }
+            }
+            // calculate the amount of tabs
+            return amountOfTabs;
+        }
+        /// <summary>
+        /// This function renders all stages
+        /// </summary>
+        public void RenderStages()
+        {
+
+        }
+        /// <summary>
+        /// This function renders the day tabs
+        /// </summary>
+        public void RenderDayTabs()
+        {
+            TabItem[] tabItems = new TabItem[5];
+            int amountOfTabs = CalculateDayTabAmount();
+            // render the tabs for the amount of tabs
+            for (int i = 0; i <= amountOfTabs; i++)
+            {
+                tabItems[i] = new TabItem {
+                    Name = "dag" + i,
+                    Header = "dag" + i
+                };
+                
+            }
         }
     }
 }
