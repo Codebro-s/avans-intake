@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl Name="TabDays">
-        <TabItem Header="TabItem">
-            <Grid Name="Day" Background="#FFE5E5E5"/>
-        </TabItem>
+      
     </TabControl>
+
 </Window>

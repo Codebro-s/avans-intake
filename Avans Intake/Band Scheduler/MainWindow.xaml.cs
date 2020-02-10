@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Web;
 
 namespace Band_Scheduler
 {
@@ -22,9 +23,14 @@ namespace Band_Scheduler
     public partial class MainWindow : Window
     {
         int amountOfTabs = 0;
+        
+        
+        // Get the already existing controls in the form
         public MainWindow()
         {
             InitializeComponent();
+            
+
             RenderDayTabs();
         } 
         /// <summary>
@@ -82,6 +88,9 @@ namespace Band_Scheduler
         /// </summary>
         public void RenderDayTabs()
         {
+            TabControl tabControl = (TabControl)FindName("TabDays");
+            Console.WriteLine(tabControl.Items.Count);
+
             TabItem[] tabItems = new TabItem[5];
             int amountOfTabs = CalculateDayTabAmount();
             // render the tabs for the amount of tabs
@@ -89,9 +98,10 @@ namespace Band_Scheduler
             {
                 tabItems[i] = new TabItem {
                     Name = "dag" + i,
-                    Header = "dag" + i
+                    Header = "dag " + i,
                 };
-                
+                tabControl.Items.Add(tabItems[i]);
+                tabItems[i].Content = "test";
             }
         }
     }
