@@ -90,7 +90,11 @@ namespace Band_Scheduler
         {
             TabControl tabControl = (TabControl)FindName("TabDays");
             Console.WriteLine(tabControl.Items.Count);
+            
+            StackPanel headPanel = new StackPanel
+            {
 
+            };
             TabItem[] tabItems = new TabItem[5];
             int amountOfTabs = CalculateDayTabAmount();
             // render the tabs for the amount of tabs
@@ -98,7 +102,7 @@ namespace Band_Scheduler
             {
                 tabItems[i] = new TabItem {
                     Name = "dag" + i,
-                    Header = "dag " + i,
+                    Header = "dag " + i
                 };
                 tabControl.Items.Add(tabItems[i]);
                 tabItems[i].Content = "test";

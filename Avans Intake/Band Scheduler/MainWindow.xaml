@@ -6,8 +6,65 @@
         xmlns:local="clr-namespace:Band_Scheduler"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <TabControl Name="TabDays">
-      
+    <TabControl x:Name="TabDays">
+        <TabItem Header="TabItem">
+            <StackPanel Grid.Column="0" Name="WrapPanel">
+                <Grid ShowGridLines="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Name="Stack">
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Name="PerformancesPanel">
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Name="Stack1">
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" Name="PerformancesPanel1">
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="4" Name="Stack2">
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                    </StackPanel>
+                    <StackPanel Grid.Column="5" Name="PerformancesPanel3">
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                        <Label>Yo</Label>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            
+            
+        </TabItem>
     </TabControl>
 
 </Window>
