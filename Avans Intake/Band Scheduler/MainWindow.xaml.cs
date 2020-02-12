@@ -29,8 +29,8 @@ namespace Band_Scheduler
         public MainWindow()
         {
             InitializeComponent();
-            
 
+            CalculateDayTabs();
             RenderDayTabs();
         } 
         /// <summary>
@@ -107,6 +107,41 @@ namespace Band_Scheduler
                 tabControl.Items.Add(tabItems[i]);
                 tabItems[i].Content = "test";
             }
+        }
+        private List<Performance> TestPerformances { get; set; }
+
+        public int CalculateDayTabs()
+        {
+            #region
+            TestPerformances = new List<Performance>();
+            // maak eerst effe wat test data
+            for (int i = 0; i < 20; i++)
+            {
+                TestPerformances.Add(
+                    new Performance
+                    {
+                        Id = i,
+                        Performer = new Performer
+                        {
+                            Id = i,
+                            Name = "stomme band"
+                        },
+                        Stage = new Stage
+                        {
+                            Id = i,
+                            Name = "stomme stage"
+                        },
+                        StartDateTime = DateTime.UtcNow.AddHours(i),
+                        EndDateTime = DateTime.UtcNow.AddHours(i + 1)
+                    }
+                );
+            }
+            #endregion
+            // Order de performances eerst
+            TestPerformances.OrderBy(performance => performance.StartDateTime);
+            // Compare hoe veel dagen er tussen zitten. 
+            int amountOfTabsNeeded = TestPerformances[TestPerformances.Count - 1].StartDateTime.DayOfWeek.CompareTo(TestPerformances[0].StartDateTime.DayOfWeek);
+            return amountOfTabsNeeded;
         }
     }
 }
