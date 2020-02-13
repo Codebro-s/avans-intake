@@ -5,12 +5,16 @@ using System.Threading.Tasks;
 
 namespace BandScheduler.Models
 {
-    public class Performances
+    public class Performance
     {
         public int Id { get; set; }
-        public Performer Performer { get; set; }
-        public Stage Stage { get; set; }
+
+        public int PerformerId { get; set; }
+
+        public int StageId { get; set; }
+
         public DateTime StartDateTime { get; set; }
+
         public DateTime EndDateTime { get; set; }
     }
 }
