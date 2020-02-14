@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BandScheduler.Services
 {
-    public class PerformanceSQLService : SQLService<Performance>, IService<Performance>
+    public class PerformanceSQLService : SQLService<Performance>, IPerformanceService
     {
         protected override string Table => "Performance";
 
@@ -36,6 +36,14 @@ namespace BandScheduler.Services
 
         public Performance Get(int id) => ExecuteQuery($"SELECT * FROM {Table} WHERE Id = {id}").FirstOrDefault();
 
+        public void Create(Performance model)
+        {
+            ExecuteQuery(
+                $"INSERT INTO {Table} (PerformerId, StageId, StartDateTime, EndDateTime) " +
+                $"VALUES ({model.Performer.Id}, {model.Stage.Id}, '{model.StartDateTime}', '{model.EndDateTime}')"
+            );
+        }
+
         public void Create(Performance model, string startDateString, string endDateString)
         {
             model.StartDateTime = DateTime.Parse(startDateString);
@@ -43,7 +51,7 @@ namespace BandScheduler.Services
 
             ExecuteQuery(
                 $"INSERT INTO {Table} (PerformerId, StageId, StartDateTime, EndDateTime) " +
-                $"VALUES ({model.Performer.Id}, {model.Stage.Id}, '{model.StartDateTime}', '{model.EndDateTime}')"
+                $"VALUES ({model.Performer.Id}, {model.Stage.Id}, '{model.StartDateTime.ToString("yyyy-MM-dd HH:mm:ss")}', '{model.EndDateTime.ToString("yyyy-MM-dd HH:mm:ss")}')"
             );
         }
 

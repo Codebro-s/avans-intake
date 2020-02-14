@@ -33,7 +33,7 @@ namespace BandScheduler
 
             services.AddSingleton<IService<Performer>, PerformerSQLService>();
             services.AddSingleton<IService<Stage>, StageSQLService>();
-            services.AddSingleton<IService<Performance>, PerformanceSQLService>();
+            services.AddSingleton<IPerformanceService, PerformanceSQLService>();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

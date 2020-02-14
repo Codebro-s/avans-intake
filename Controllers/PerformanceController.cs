@@ -13,9 +13,9 @@ namespace BandScheduler.Controllers
     [ApiController]
     public class PerformanceController : ControllerBase
     {
-        private readonly IService<Performance> _performances;
+        private readonly IPerformanceService _performances;
 
-        public PerformanceController(IService<Performance> performanceService)
+        public PerformanceController(IPerformanceService performanceService)
         {
             _performances = performanceService;
         }
@@ -30,7 +30,7 @@ namespace BandScheduler.Controllers
 
         // POST: api/performances
         [HttpPost]
-        public void Post([FromBody] Performance model) => _performances.Create(model);
+        public void Post([FromBody] Performance model, [FromQuery] string startDateString, [FromQuery] string endDateString) => _performances.Create(model, startDateString, endDateString);
 
         // PUT: api/performances/1
         [HttpPut("{id}")]
