@@ -9,9 +9,9 @@ namespace BandScheduler.Models
     {
         public int Id { get; set; }
 
-        public Performer Performer { get; set; }
+        public int PerformerId { get; set; }
 
-        public Stage Stage { get; set; }
+        public int StageId { get; set; }
 
         public DateTime StartDateTime { get; set; }
 
