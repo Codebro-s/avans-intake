@@ -8,6 +8,8 @@ namespace BandScheduler.Services
 {
     public interface IPerformanceService : IService<Performance>
     {
+        public IEnumerable<Performance> GetByStage(int id);
+
         public void Create(Performance model, string startDateString, string endDateString);
     }
 }

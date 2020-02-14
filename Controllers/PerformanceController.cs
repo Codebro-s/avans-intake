@@ -20,6 +20,10 @@ namespace BandScheduler.Controllers
             _performances = performanceService;
         }
 
+        // GET: api/performances/stage/1
+        [HttpGet("stage/{id}")]
+        public IEnumerable<Performance> GetByStage(int id) => _performances.GetByStage(id);
+
         // GET: api/performances
         [HttpGet]
         public IEnumerable<Performance> Get() => _performances.Get();

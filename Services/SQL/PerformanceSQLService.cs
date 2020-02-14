@@ -32,6 +32,8 @@ namespace BandScheduler.Services
             };
         }
 
+        public IEnumerable<Performance> GetByStage(int id) => ExecuteQuery($"SELECT * FROM {Table} WHERE StageId = {id}");
+
         public IEnumerable<Performance> Get() => ExecuteQuery($"SELECT * FROM {Table}");
 
         public Performance Get(int id) => ExecuteQuery($"SELECT * FROM {Table} WHERE Id = {id}").FirstOrDefault();
