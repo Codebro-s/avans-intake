@@ -16,16 +16,17 @@
     <div class="row">
       <!-- In each tab make all the stages -->
       <div class="col-md-3 stages" *ngFor="let stage of stages">
-          <div class="stage-header col-md-12">{{stage.name}}
+          <div class="stage col-md-12">
             <div class="row">
-              <div class="col-md-2 time-label">13:25</div>
-              <div class="col-md-6 offset-md-3">goede band</div>
+              <div class="stage-header col-md-12 offset-md-3">{{stage.name}}</div>
             </div>
-
-            <!-- In each stage make the performances that belong to the stage -->
-            <!-- <div class="performances" *ngFor="let performance of stages.performance">
-              <li class="stage-header col-sm">{{stage.name}}</li>
-            </div> -->
+            <div class="row">
+              <!-- In each stage make the performances that belong to the stage -->
+              <div class="performances" *ngFor="let performance of ">
+                <li class="col-md-2">{{performance.startDateTime}}:</li>
+                <li class="col-md-6">{{performance.performerId}}</li>
+              </div>
+            </div>
           </div>
       </div>
     </div>
@@ -34,46 +35,46 @@
   <div class="tab-pane fade" id="crud" role="tabpanel" aria-labelledby="crud-tab">
     <div class="row">
       <div class="col-sm">
-        <form [formGroup]="stageForm" (ngSubmit)="storeStage()">
+        <form class="form-group" [formGroup]="stageForm" (ngSubmit)="storeStage()">
           <h1>Stage</h1>
           <label>
             Name:
             <div class="row">
-              <input type="text" formControlName="name">
+              <input class="form-control" type="text" formControlName="name">
             </div>
-            <input type="submit">
+            <input class="btn btn-primary" type="submit">
           </label>
         </form>
       </div>
       <div class="col-sm">
-        <form [formGroup]="performerForm" (ngSubmit)="storePerformer()">
+        <form class="form-group" [formGroup]="performerForm" (ngSubmit)="storePerformer()">
           <h1>Performer</h1>
           <label>
             Name:
             <div class="row">
-              <input type="text" formControlName="name">
+              <input class="form-control" type="text" formControlName="name">
             </div>
             Description:
             <div class="row">
-              <input type="text" formControlName="description">
+              <input class="form-control" type="text" formControlName="description">
             </div>
-            <input type="submit">
+            <input class="btn btn-primary" type="submit">
           </label>
         </form>
       </div>
       <div class="col-sm">
-        <form [formGroup]="performanceForm" (ngSubmit)="storePerformance()">
+        <form class="form-group" [formGroup]="performanceForm" (ngSubmit)="storePerformance()">
           <h1>Performance</h1>
           <label>
             Stages:
             <div class="row">
-              <select formControlName="stage">
+              <select formControlName="stageId">
                 <option *ngFor="let stage of stages" value="{{stage.id}}">{{stage.name}}</option>
               </select>
             </div>
             Performers:
             <div class="row">
-              <select  formControlName="performer">
+              <select  formControlName="performerId">
                 <option *ngFor="let performer of performers" value="{{performer.id}}">{{performer.name}}</option>
               </select>
             </div>
@@ -83,9 +84,9 @@
             </div>
             End time:
             <div class="row">
-              <input type="datetime-local" formControlName="startDateTime">
+              <input type="datetime-local" formControlName="endDateTime">
             </div>
-            <input type="submit">
+            <input class="btn btn-primary" type="submit">
           </label>
         </form>
       </div>

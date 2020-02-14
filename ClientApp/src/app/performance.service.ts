@@ -20,8 +20,8 @@ export class PerformanceService {
     return this.http.get<PerformanceModel>(`${this.api}/${id}`);
   }
 
-  createPerformance(model: PerformanceModel): Observable<PerformanceModel> {
-    return this.http.post<PerformanceModel>(`${this.api}/`, model);
+  createPerformance(model: PerformanceModel,startDateTime: string, endDateTime: string): Observable<PerformanceModel> {
+    return this.http.post<PerformanceModel>(`${this.api}/`, model, {params:{startDateTime: startDateTime, endDateTime: endDateTime } });
   }
 
   updatePerformance(id: number, model: PerformanceModel): Observable<PerformanceModel> {
@@ -30,5 +30,8 @@ export class PerformanceService {
 
   deletePerformance(id: number): Observable<PerformanceModel> {
     return this.http.delete<PerformanceModel>(`${this.api}/${id}`);
+  }
+  getPerformancesByStage(id: number): Observable<PerformanceModel[]> {
+    return this.http.get<PerformanceModel[]>(`${this.api}/stage/${id}`);
   }
 }

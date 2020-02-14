@@ -20,15 +20,15 @@ export class PerformerService {
     return this.http.get<PerformerModel>(`${this.api}/${id}`);
   }
 
-  createPerformer(model: PerformerModel): void {
-    this.http.post<PerformerModel>(`${this.api}/`, model);
+  createPerformer(model: PerformerModel): Observable<PerformerModel> {
+    return this.http.post<PerformerModel>(`${this.api}/`, model);
   }
 
-  updatePerformer(id: number, model: PerformerModel): void {
-    this.http.put<PerformerModel>(`${this.api}/${id}`, model);
+  updatePerformer(id: number, model: PerformerModel): Observable<PerformerModel> {
+    return this.http.put<PerformerModel>(`${this.api}/${id}`, model);
   }
 
-  deletePerformer(id: number): void {
-    this.http.delete<PerformerModel>(`${this.api}/${id}`);
+  deletePerformer(id: number): Observable<PerformerModel> {
+    return this.http.delete<PerformerModel>(`${this.api}/${id}`);
   }
 }
