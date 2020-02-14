@@ -25,7 +25,7 @@ namespace BandScheduler.Controllers
         public IEnumerable<Performer> Get() => _performers.Get();
 
         // GET: api/performers/1
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Performer Get(int id) => _performers.Get(id);
 
         // POST: api/performers

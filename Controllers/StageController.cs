@@ -25,7 +25,7 @@ namespace BandScheduler.Controllers
         public IEnumerable<Stage> Get() => _stages.Get();
 
         // GET: api/stages/1
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Stage Get(int id) => _stages.Get(id);
 
         // POST: api/stages
