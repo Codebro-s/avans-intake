@@ -11,15 +11,22 @@ namespace BandScheduler.Services
     {
         protected override string Table => "Performance";
 
-        public PerformanceSQLService(IDatabaseSettings settings) : base(settings) { }
+        private readonly IService<Performer> _performers;
+        private readonly IService<Stage> _stages;
+
+        public PerformanceSQLService(IDatabaseSettings settings, IService<Performer> performerService, IService<Stage> stageService) : base(settings) 
+        {
+            _performers = performerService;
+            _stages = stageService;
+        }
 
         protected override Performance ToModel(SqlDataReader data)
         {
             return new Performance
             {
                 Id              = (int)data["id"],
-                PerformerId     = (int)data["PerformerId"],
-                StageId         = (int)data["StageId"],
+                Performer       = _performers.Get((int)data["PerformerId"]),
+                Stage           = _stages.Get((int)data["StageId"]),
                 StartDateTime   = (DateTime)data["StartDateTime"],
                 EndDateTime     = (DateTime)data["EndDateTime"]
             };
@@ -33,7 +40,7 @@ namespace BandScheduler.Services
         {
             ExecuteQuery(
                 $"INSERT INTO {Table} (PerformerId, StageId, StartDateTime, EndDateTime) " +
-                $"VALUES ({model.PerformerId}, {model.StageId}, '{model.StartDateTime}', '{model.EndDateTime}')"
+                $"VALUES ({model.Performer.Id}, {model.Stage.Id}, '{model.StartDateTime}', '{model.EndDateTime}')"
             );
         }
 
@@ -41,7 +48,7 @@ namespace BandScheduler.Services
         {
             ExecuteQuery(
                 $"UPDATE {Table} " +
-                $"SET PerformerId = {model.PerformerId}, StageId = {model.StageId}, StartDateTime = '{model.StartDateTime}', EndDateTime = '{model.EndDateTime}' " +
+                $"SET PerformerId = {model.Performer.Id}, StageId = {model.Stage.Id}, StartDateTime = '{model.StartDateTime}', EndDateTime = '{model.EndDateTime}' " +
                 $"WHERE Id = {id};"
             );
         }
